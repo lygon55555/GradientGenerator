@@ -40,7 +40,8 @@ class GradientViewController: UIViewController {
     var gradient: CAGradientLayer!
     
     override func viewDidLoad() {
-        
+        overrideUserInterfaceStyle = .light
+
         colorImage1Background.layer.borderWidth = 2
         colorImage1Background.layer.cornerRadius = 10
         colorImage2Background.layer.borderWidth = 2
@@ -52,26 +53,23 @@ class GradientViewController: UIViewController {
         colorImage2Background.layer.borderColor = UIColor.white.cgColor
         colorImage3Background.layer.borderColor = UIColor.white.cgColor
         
+        self.hexCodeTextField.isEnabled = false
         
         
-//        color1 = UserDefaults.standard.array(forKey: UserDefaultKey.color1) as! [Int]
-//        color2 = UserDefaults.standard.array(forKey: UserDefaultKey.color2) as! [Int]
-//        color3 = UserDefaults.standard.array(forKey: UserDefaultKey.color3) as! [Int]
-//
-//        if color1.isEmpty && color2.isEmpty && color3.isEmpty {
-//            color1.append(contentsOf: [34, 193, 195, 100])
-//            color2.append(contentsOf: [150, 190, 116, 100])
-//            color3.append(contentsOf: [255, 199, 80, 100])
-//        }
-//        else {
-//
-//        }
+        if UserDefaults.exists(key: UserDefaultKey.color1) &&
+            UserDefaults.exists(key: UserDefaultKey.color2) &&
+            UserDefaults.exists(key: UserDefaultKey.color3) {
+            color1 = UserDefaults.standard.array(forKey: UserDefaultKey.color1) as? [Int] ?? [Int]()
+            color2 = UserDefaults.standard.array(forKey: UserDefaultKey.color2) as? [Int] ?? [Int]()
+            color3 = UserDefaults.standard.array(forKey: UserDefaultKey.color3) as? [Int] ?? [Int]()
+        }
+        else {
+            color1.append(contentsOf: [34, 193, 195, 100])
+            color2.append(contentsOf: [150, 190, 116, 100])
+            color3.append(contentsOf: [255, 199, 80, 100])
+        }
 
         selectedColor = "color1"
-        
-        color1.append(contentsOf: [34, 193, 195, 100])
-        color2.append(contentsOf: [150, 190, 116, 100])
-        color3.append(contentsOf: [255, 199, 80, 100])
         
         self.gradient = CAGradientLayer()
         gradient.frame = self.gradientView.bounds
@@ -107,51 +105,55 @@ class GradientViewController: UIViewController {
         let rgbaColor = UIColor(red: CGFloat(color1[0])/255, green: CGFloat(color1[1])/255, blue: CGFloat(color1[2])/255, alpha: CGFloat(color1[3])/100)
         let hexString = rgbaColor.toHexString()
         self.hexCodeTextField.text = hexString
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
+    func changeColor1Value(colorNum: Int, value: Int) {
+        self.color1[colorNum] = value
+        let rgbaColor = UIColor(red: CGFloat(color1[0])/255, green: CGFloat(color1[1])/255, blue: CGFloat(color1[2])/255, alpha: CGFloat(color1[3])/100)
+        self.colorImage1.image = UIImage.from(color: rgbaColor, width: colorImage1.bounds.width, height: colorImage1.bounds.height)
+        let hexString = rgbaColor.toHexString()
+        self.hexCodeTextField.text = hexString
+        
+        UserDefaults.standard.set(color1, forKey: UserDefaultKey.color1)
+        UserDefaults.standard.set(color2, forKey: UserDefaultKey.color2)
+        UserDefaults.standard.set(color3, forKey: UserDefaultKey.color3)
     }
-
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
+    
+    func changeColor2Value(colorNum: Int, value: Int) {
+        self.color2[colorNum] = value
+        let rgbaColor = UIColor(red: CGFloat(color2[0])/255, green: CGFloat(color2[1])/255, blue: CGFloat(color2[2])/255, alpha: CGFloat(color2[3])/100)
+        self.colorImage2.image = UIImage.from(color: rgbaColor, width: colorImage2.bounds.width, height: colorImage2.bounds.height)
+        let hexString = rgbaColor.toHexString()
+        self.hexCodeTextField.text = hexString
+        
+        UserDefaults.standard.set(color1, forKey: UserDefaultKey.color1)
+        UserDefaults.standard.set(color2, forKey: UserDefaultKey.color2)
+        UserDefaults.standard.set(color3, forKey: UserDefaultKey.color3)
+    }
+    
+    func changeColor3Value(colorNum: Int, value: Int) {
+        self.color3[colorNum] = value
+        let rgbaColor = UIColor(red: CGFloat(color3[0])/255, green: CGFloat(color3[1])/255, blue: CGFloat(color3[2])/255, alpha: CGFloat(color3[3])/100)
+        self.colorImage3.image = UIImage.from(color: rgbaColor, width: colorImage3.bounds.width, height: colorImage3.bounds.height)
+        let hexString = rgbaColor.toHexString()
+        self.hexCodeTextField.text = hexString
+        
+        UserDefaults.standard.set(color1, forKey: UserDefaultKey.color1)
+        UserDefaults.standard.set(color2, forKey: UserDefaultKey.color2)
+        UserDefaults.standard.set(color3, forKey: UserDefaultKey.color3)
     }
 
     @IBAction func changeRedValue(_ sender: UISlider) {
         let value = Int(sender.value)
         
         if(selectedColor == "color1") {
-            self.color1[0] = value
-            self.colorImage1.image = UIImage.from(color: UIColor(red: CGFloat(color1[0])/255, green: CGFloat(color1[1])/255, blue: CGFloat(color1[2])/255, alpha: CGFloat(color1[3])/100), width: colorImage1.bounds.width, height: colorImage1.bounds.height)
-            
-            let rgbaColor = UIColor(red: CGFloat(color1[0])/255, green: CGFloat(color1[1])/255, blue: CGFloat(color1[2])/255, alpha: CGFloat(color1[3])/100)
-            let hexString = rgbaColor.toHexString()
-            self.hexCodeTextField.text = hexString
+            changeColor1Value(colorNum: 0, value: value)
         }
         else if(selectedColor == "color2") {
-            self.color2[0] = value
-            self.colorImage2.image = UIImage.from(color: UIColor(red: CGFloat(color2[0])/255, green: CGFloat(color2[1])/255, blue: CGFloat(color2[2])/255, alpha: CGFloat(color2[3])/100), width: colorImage2.bounds.width, height: colorImage2.bounds.height)
-            
-            let rgbaColor = UIColor(red: CGFloat(color2[0])/255, green: CGFloat(color2[1])/255, blue: CGFloat(color2[2])/255, alpha: CGFloat(color2[3])/100)
-            let hexString = rgbaColor.toHexString()
-            self.hexCodeTextField.text = hexString
+            changeColor2Value(colorNum: 0, value: value)
         }
         else {
-            self.color3[0] = value
-            self.colorImage3.image = UIImage.from(color: UIColor(red: CGFloat(color3[0])/255, green: CGFloat(color3[1])/255, blue: CGFloat(color3[2])/255, alpha: CGFloat(color3[3])/100), width: colorImage3.bounds.width, height: colorImage3.bounds.height)
-            
-            let rgbaColor = UIColor(red: CGFloat(color3[0])/255, green: CGFloat(color3[1])/255, blue: CGFloat(color3[2])/255, alpha: CGFloat(color3[3])/100)
-            let hexString = rgbaColor.toHexString()
-            self.hexCodeTextField.text = hexString
+            changeColor3Value(colorNum: 0, value: value)
         }
         
         gradient.colors = [
@@ -166,28 +168,13 @@ class GradientViewController: UIViewController {
         let value = Int(sender.value)
         
         if(selectedColor == "color1") {
-            self.color1[1] = value
-            self.colorImage1.image = UIImage.from(color: UIColor(red: CGFloat(color1[0])/255, green: CGFloat(color1[1])/255, blue: CGFloat(color1[2])/255, alpha: CGFloat(color1[3])/100), width: colorImage1.bounds.width, height: colorImage1.bounds.height)
-            
-            let rgbaColor = UIColor(red: CGFloat(color1[0])/255, green: CGFloat(color1[1])/255, blue: CGFloat(color1[2])/255, alpha: CGFloat(color1[3])/100)
-            let hexString = rgbaColor.toHexString()
-            self.hexCodeTextField.text = hexString
+            changeColor1Value(colorNum: 1, value: value)
         }
         else if(selectedColor == "color2") {
-            self.color2[1] = value
-            self.colorImage2.image = UIImage.from(color: UIColor(red: CGFloat(color2[0])/255, green: CGFloat(color2[1])/255, blue: CGFloat(color2[2])/255, alpha: CGFloat(color2[3])/100), width: colorImage2.bounds.width, height: colorImage2.bounds.height)
-            
-            let rgbaColor = UIColor(red: CGFloat(color2[0])/255, green: CGFloat(color2[1])/255, blue: CGFloat(color2[2])/255, alpha: CGFloat(color2[3])/100)
-            let hexString = rgbaColor.toHexString()
-            self.hexCodeTextField.text = hexString
+            changeColor2Value(colorNum: 1, value: value)
         }
         else {
-            self.color3[1] = value
-            self.colorImage3.image = UIImage.from(color: UIColor(red: CGFloat(color3[0])/255, green: CGFloat(color3[1])/255, blue: CGFloat(color3[2])/255, alpha: CGFloat(color3[3])/100), width: colorImage3.bounds.width, height: colorImage3.bounds.height)
-            
-            let rgbaColor = UIColor(red: CGFloat(color3[0])/255, green: CGFloat(color3[1])/255, blue: CGFloat(color3[2])/255, alpha: CGFloat(color3[3])/100)
-            let hexString = rgbaColor.toHexString()
-            self.hexCodeTextField.text = hexString
+            changeColor3Value(colorNum: 1, value: value)
         }
         
         gradient.colors = [
@@ -202,28 +189,13 @@ class GradientViewController: UIViewController {
         let value = Int(sender.value)
         
         if(selectedColor == "color1") {
-            self.color1[2] = value
-            self.colorImage1.image = UIImage.from(color: UIColor(red: CGFloat(color1[0])/255, green: CGFloat(color1[1])/255, blue: CGFloat(color1[2])/255, alpha: CGFloat(color1[3])/100), width: colorImage1.bounds.width, height: colorImage1.bounds.height)
-            
-            let rgbaColor = UIColor(red: CGFloat(color1[0])/255, green: CGFloat(color1[1])/255, blue: CGFloat(color1[2])/255, alpha: CGFloat(color1[3])/100)
-            let hexString = rgbaColor.toHexString()
-            self.hexCodeTextField.text = hexString
+            changeColor1Value(colorNum: 2, value: value)
         }
         else if(selectedColor == "color2") {
-            self.color2[2] = value
-            self.colorImage2.image = UIImage.from(color: UIColor(red: CGFloat(color2[0])/255, green: CGFloat(color2[1])/255, blue: CGFloat(color2[2])/255, alpha: CGFloat(color2[3])/100), width: colorImage2.bounds.width, height: colorImage2.bounds.height)
-            
-            let rgbaColor = UIColor(red: CGFloat(color2[0])/255, green: CGFloat(color2[1])/255, blue: CGFloat(color2[2])/255, alpha: CGFloat(color2[3])/100)
-            let hexString = rgbaColor.toHexString()
-            self.hexCodeTextField.text = hexString
+            changeColor2Value(colorNum: 2, value: value)
         }
         else {
-            self.color3[2] = value
-            self.colorImage3.image = UIImage.from(color: UIColor(red: CGFloat(color3[0])/255, green: CGFloat(color3[1])/255, blue: CGFloat(color3[2])/255, alpha: CGFloat(color3[3])/100), width: colorImage3.bounds.width, height: colorImage3.bounds.height)
-            
-            let rgbaColor = UIColor(red: CGFloat(color3[0])/255, green: CGFloat(color3[1])/255, blue: CGFloat(color3[2])/255, alpha: CGFloat(color3[3])/100)
-            let hexString = rgbaColor.toHexString()
-            self.hexCodeTextField.text = hexString
+            changeColor3Value(colorNum: 2, value: value)
         }
         
         gradient.colors = [
@@ -239,28 +211,13 @@ class GradientViewController: UIViewController {
         let intValue = Int(value*100)
         
         if(selectedColor == "color1") {
-            self.color1[3] = intValue
-            self.colorImage1.image = UIImage.from(color: UIColor(red: CGFloat(color1[0])/255, green: CGFloat(color1[1])/255, blue: CGFloat(color1[2])/255, alpha: CGFloat(color1[3])/100), width: colorImage1.bounds.width, height: colorImage1.bounds.height)
-            
-            let rgbaColor = UIColor(red: CGFloat(color1[0])/255, green: CGFloat(color1[1])/255, blue: CGFloat(color1[2])/255, alpha: CGFloat(color1[3])/100)
-            let hexString = rgbaColor.toHexString()
-            self.hexCodeTextField.text = hexString
+            changeColor1Value(colorNum: 3, value: intValue)
         }
         else if(selectedColor == "color2") {
-            self.color2[3] = intValue
-            self.colorImage2.image = UIImage.from(color: UIColor(red: CGFloat(color2[0])/255, green: CGFloat(color2[1])/255, blue: CGFloat(color2[2])/255, alpha: CGFloat(color2[3])/100), width: colorImage2.bounds.width, height: colorImage2.bounds.height)
-            
-            let rgbaColor = UIColor(red: CGFloat(color2[0])/255, green: CGFloat(color2[1])/255, blue: CGFloat(color2[2])/255, alpha: CGFloat(color2[3])/100)
-            let hexString = rgbaColor.toHexString()
-            self.hexCodeTextField.text = hexString
+            changeColor2Value(colorNum: 3, value: intValue)
         }
         else {
-            self.color3[3] = intValue
-            self.colorImage3.image = UIImage.from(color: UIColor(red: CGFloat(color3[0])/255, green: CGFloat(color3[1])/255, blue: CGFloat(color3[2])/255, alpha: CGFloat(color3[3])/100), width: colorImage3.bounds.width, height: colorImage3.bounds.height)
-            
-            let rgbaColor = UIColor(red: CGFloat(color3[0])/255, green: CGFloat(color3[1])/255, blue: CGFloat(color3[2])/255, alpha: CGFloat(color3[3])/100)
-            let hexString = rgbaColor.toHexString()
-            self.hexCodeTextField.text = hexString
+            changeColor3Value(colorNum: 3, value: intValue)
         }
         
         gradient.colors = [
@@ -346,10 +303,6 @@ class GradientViewController: UIViewController {
         let hexString = rgbaColor.toHexString()
         self.hexCodeTextField.text = hexString
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-          self.view.endEditing(true)
-    }
 }
 
 extension UIImage {
@@ -414,5 +367,11 @@ extension UIColor {
         assert(blue >= 0 && blue <= 255, "Invalid blue component")
 
         self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+    }
+}
+
+extension UserDefaults {
+    static func exists(key: String) -> Bool {
+        return UserDefaults.standard.object(forKey: key) != nil
     }
 }
