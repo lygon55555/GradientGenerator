@@ -107,6 +107,23 @@ class GradientViewController: UIViewController {
         let rgbaColor = UIColor(red: CGFloat(color1[0])/255, green: CGFloat(color1[1])/255, blue: CGFloat(color1[2])/255, alpha: CGFloat(color1[3])/100)
         let hexString = rgbaColor.toHexString()
         self.hexCodeTextField.text = hexString
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
 
     @IBAction func changeRedValue(_ sender: UISlider) {
