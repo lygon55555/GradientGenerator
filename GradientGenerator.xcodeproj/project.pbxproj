@@ -12,11 +12,16 @@
 		C750D2502460032200DB003C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C750D24E2460032200DB003C /* Main.storyboard */; };
 		C750D2522460032400DB003C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C750D2512460032400DB003C /* Assets.xcassets */; };
 		C750D2552460032400DB003C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C750D2532460032400DB003C /* LaunchScreen.storyboard */; };
+		C76431302499F98000811E97 /* GradientViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C764312F2499F98000811E97 /* GradientViewReactor.swift */; };
 		C7D041BD2461144900C953C2 /* GradientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D041BC2461144900C953C2 /* GradientViewController.swift */; };
 		C7D041C32461194400C953C2 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D041C22461194400C953C2 /* UserDefaultsKey.swift */; };
+		F229424970DFE01E4E7F7531 /* Pods_GradientGenerator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DC1F5ACA81406780D129009 /* Pods_GradientGenerator.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28F57853E4F8C6ADD191C6FC /* Pods-GradientGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GradientGenerator.release.xcconfig"; path = "Target Support Files/Pods-GradientGenerator/Pods-GradientGenerator.release.xcconfig"; sourceTree = "<group>"; };
+		2DC1F5ACA81406780D129009 /* Pods_GradientGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GradientGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A894B02EDB0CE148709F1A30 /* Pods-GradientGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GradientGenerator.debug.xcconfig"; path = "Target Support Files/Pods-GradientGenerator/Pods-GradientGenerator.debug.xcconfig"; sourceTree = "<group>"; };
 		C750D2452460032200DB003C /* GradientGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GradientGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C750D2482460032200DB003C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C750D24A2460032200DB003C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +29,7 @@
 		C750D2512460032400DB003C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C750D2542460032400DB003C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C750D2562460032400DB003C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C764312F2499F98000811E97 /* GradientViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientViewReactor.swift; sourceTree = "<group>"; };
 		C7D041BC2461144900C953C2 /* GradientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientViewController.swift; sourceTree = "<group>"; };
 		C7D041C22461194400C953C2 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -33,17 +39,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F229424970DFE01E4E7F7531 /* Pods_GradientGenerator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		214571B7273A8B6878FF90D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2DC1F5ACA81406780D129009 /* Pods_GradientGenerator.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4696A77BAA42160C6E2E389A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A894B02EDB0CE148709F1A30 /* Pods-GradientGenerator.debug.xcconfig */,
+				28F57853E4F8C6ADD191C6FC /* Pods-GradientGenerator.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C750D23C2460032200DB003C = {
 			isa = PBXGroup;
 			children = (
 				C750D2472460032200DB003C /* GradientGenerator */,
 				C750D2462460032200DB003C /* Products */,
+				4696A77BAA42160C6E2E389A /* Pods */,
+				214571B7273A8B6878FF90D9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +88,7 @@
 				C750D2482460032200DB003C /* AppDelegate.swift */,
 				C750D24A2460032200DB003C /* SceneDelegate.swift */,
 				C7D041BC2461144900C953C2 /* GradientViewController.swift */,
+				C764312F2499F98000811E97 /* GradientViewReactor.swift */,
 				C7D041C22461194400C953C2 /* UserDefaultsKey.swift */,
 				C750D24E2460032200DB003C /* Main.storyboard */,
 				C750D2512460032400DB003C /* Assets.xcassets */,
@@ -77,9 +105,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C750D2592460032400DB003C /* Build configuration list for PBXNativeTarget "GradientGenerator" */;
 			buildPhases = (
+				AFD9A2CAB9836551A4FCA186 /* [CP] Check Pods Manifest.lock */,
 				C750D2412460032200DB003C /* Sources */,
 				C750D2422460032200DB003C /* Frameworks */,
 				C750D2432460032200DB003C /* Resources */,
+				94CBE0FBCA6C59EF9E410F73 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -136,6 +166,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		94CBE0FBCA6C59EF9E410F73 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GradientGenerator/Pods-GradientGenerator-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GradientGenerator/Pods-GradientGenerator-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GradientGenerator/Pods-GradientGenerator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AFD9A2CAB9836551A4FCA186 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GradientGenerator-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C750D2412460032200DB003C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -144,6 +216,7 @@
 				C7D041C32461194400C953C2 /* UserDefaultsKey.swift in Sources */,
 				C750D2492460032200DB003C /* AppDelegate.swift in Sources */,
 				C750D24B2460032200DB003C /* SceneDelegate.swift in Sources */,
+				C76431302499F98000811E97 /* GradientViewReactor.swift in Sources */,
 				C7D041BD2461144900C953C2 /* GradientViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +359,7 @@
 		};
 		C750D25A2460032400DB003C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A894B02EDB0CE148709F1A30 /* Pods-GradientGenerator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -304,6 +378,7 @@
 		};
 		C750D25B2460032400DB003C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28F57853E4F8C6ADD191C6FC /* Pods-GradientGenerator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
