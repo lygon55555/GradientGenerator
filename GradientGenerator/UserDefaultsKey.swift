@@ -9,7 +9,7 @@
 import Foundation
 
 struct UserDefaultKey {
-    static let color1: String = "color1"    // R, G, B, A
+    static let color0: String = "color0"    // R, G, B, A
+    static let color1: String = "color1"
     static let color2: String = "color2"
-    static let color3: String = "color3"
 }

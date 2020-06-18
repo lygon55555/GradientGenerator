@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C70FE2A0249AEF700013378A /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70FE29F249AEF700013378A /* Util.swift */; };
 		C750D2492460032200DB003C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C750D2482460032200DB003C /* AppDelegate.swift */; };
 		C750D24B2460032200DB003C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C750D24A2460032200DB003C /* SceneDelegate.swift */; };
 		C750D2502460032200DB003C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C750D24E2460032200DB003C /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 		28F57853E4F8C6ADD191C6FC /* Pods-GradientGenerator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GradientGenerator.release.xcconfig"; path = "Target Support Files/Pods-GradientGenerator/Pods-GradientGenerator.release.xcconfig"; sourceTree = "<group>"; };
 		2DC1F5ACA81406780D129009 /* Pods_GradientGenerator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GradientGenerator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A894B02EDB0CE148709F1A30 /* Pods-GradientGenerator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GradientGenerator.debug.xcconfig"; path = "Target Support Files/Pods-GradientGenerator/Pods-GradientGenerator.debug.xcconfig"; sourceTree = "<group>"; };
+		C70FE29F249AEF700013378A /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		C750D2452460032200DB003C /* GradientGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GradientGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C750D2482460032200DB003C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C750D24A2460032200DB003C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,7 +62,6 @@
 				A894B02EDB0CE148709F1A30 /* Pods-GradientGenerator.debug.xcconfig */,
 				28F57853E4F8C6ADD191C6FC /* Pods-GradientGenerator.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -90,6 +91,7 @@
 				C7D041BC2461144900C953C2 /* GradientViewController.swift */,
 				C764312F2499F98000811E97 /* GradientViewReactor.swift */,
 				C7D041C22461194400C953C2 /* UserDefaultsKey.swift */,
+				C70FE29F249AEF700013378A /* Util.swift */,
 				C750D24E2460032200DB003C /* Main.storyboard */,
 				C750D2512460032400DB003C /* Assets.xcassets */,
 				C750D2532460032400DB003C /* LaunchScreen.storyboard */,
@@ -214,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7D041C32461194400C953C2 /* UserDefaultsKey.swift in Sources */,
+				C70FE2A0249AEF700013378A /* Util.swift in Sources */,
 				C750D2492460032200DB003C /* AppDelegate.swift in Sources */,
 				C750D24B2460032200DB003C /* SceneDelegate.swift in Sources */,
 				C76431302499F98000811E97 /* GradientViewReactor.swift in Sources */,

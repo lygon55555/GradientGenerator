@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -24,16 +24,16 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YiL-oj-Jqw" userLabel="ColorImagesStackView">
                                         <rect key="frame" x="5" y="10" width="148" height="211"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q93-fO-fJQ" userLabel="ColorImage1Background">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q93-fO-fJQ" userLabel="ColorImage0Background">
                                                 <rect key="frame" x="0.0" y="0.0" width="148" height="70.333333333333329"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zsq-sF-Snr" userLabel="ColorImage1">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zsq-sF-Snr" userLabel="ColorImage0">
                                                         <rect key="frame" x="7" y="7.0000000000000036" width="134" height="56.333333333333343"/>
                                                     </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boC-Es-gBm">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boC-Es-gBm" userLabel="SelectColor0">
                                                         <rect key="frame" x="0.0" y="0.0" width="148" height="70.333333333333329"/>
                                                         <connections>
-                                                            <action selector="selectColorImage1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nst-tF-Ozr"/>
+                                                            <action selector="selectColorImage0:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JGr-gt-vjT"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -49,16 +49,16 @@
                                                     <constraint firstAttribute="bottom" secondItem="boC-Es-gBm" secondAttribute="bottom" id="zb4-tE-4z1"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOD-Aj-Irw" userLabel="ColorImage2Background">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOD-Aj-Irw" userLabel="ColorImage1Background">
                                                 <rect key="frame" x="0.0" y="70.333333333333371" width="148" height="70.333333333333314"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ik8-Nr-gsP" userLabel="ColorImage2">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ik8-Nr-gsP" userLabel="ColorImage1">
                                                         <rect key="frame" x="7" y="7.0000000000000036" width="134" height="56.333333333333343"/>
                                                     </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPy-yn-aZ7">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPy-yn-aZ7" userLabel="SelectColor1">
                                                         <rect key="frame" x="0.0" y="0.0" width="148" height="70.333333333333329"/>
                                                         <connections>
-                                                            <action selector="selectColorImage2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g47-ix-0ML"/>
+                                                            <action selector="selectColorImage1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2KX-bh-hLN"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -74,16 +74,16 @@
                                                     <constraint firstAttribute="trailing" secondItem="Ik8-Nr-gsP" secondAttribute="trailing" constant="7" id="yWy-mu-hlh"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTN-mx-oca" userLabel="ColorImage3Background">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZTN-mx-oca" userLabel="ColorImage2Background">
                                                 <rect key="frame" x="0.0" y="140.66666666666663" width="148" height="70.333333333333314"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K5L-9J-Rcd" userLabel="ColorImage3">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K5L-9J-Rcd" userLabel="ColorImage2">
                                                         <rect key="frame" x="7" y="7.0000000000000036" width="134" height="56.333333333333343"/>
                                                     </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rzp-ZP-ZMb">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rzp-ZP-ZMb" userLabel="SelectColor2">
                                                         <rect key="frame" x="0.0" y="0.0" width="148" height="70.333333333333329"/>
                                                         <connections>
-                                                            <action selector="selectColorImage3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PwL-ai-5Dm"/>
+                                                            <action selector="selectColorImage2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NPY-qk-99C"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -310,12 +310,12 @@
                         <outlet property="alphaValueLabel" destination="yIs-7f-VQd" id="bZa-83-yqH"/>
                         <outlet property="blueSlider" destination="AAm-Eh-DW0" id="mMr-TP-LLb"/>
                         <outlet property="blueValueLabel" destination="FEH-T3-Hcr" id="8dG-Uh-UEJ"/>
-                        <outlet property="colorImage1" destination="zsq-sF-Snr" id="2iq-gQ-YeF"/>
-                        <outlet property="colorImage1Background" destination="q93-fO-fJQ" id="Cou-5U-fZg"/>
-                        <outlet property="colorImage2" destination="Ik8-Nr-gsP" id="HyQ-Uv-Yz6"/>
-                        <outlet property="colorImage2Background" destination="GOD-Aj-Irw" id="Knr-07-Mmi"/>
-                        <outlet property="colorImage3" destination="K5L-9J-Rcd" id="5cU-NE-EaU"/>
-                        <outlet property="colorImage3Background" destination="ZTN-mx-oca" id="y8I-06-pLE"/>
+                        <outlet property="colorImage0" destination="zsq-sF-Snr" id="90c-pA-HdZ"/>
+                        <outlet property="colorImage0Background" destination="q93-fO-fJQ" id="7qd-bx-50y"/>
+                        <outlet property="colorImage1" destination="Ik8-Nr-gsP" id="CrT-zr-hz0"/>
+                        <outlet property="colorImage1Background" destination="GOD-Aj-Irw" id="rim-Ya-TPQ"/>
+                        <outlet property="colorImage2" destination="K5L-9J-Rcd" id="lBH-Yi-izp"/>
+                        <outlet property="colorImage2Background" destination="ZTN-mx-oca" id="eWF-AL-AVy"/>
                         <outlet property="gradientView" destination="vQF-Na-mbM" id="FgV-yr-YXt"/>
                         <outlet property="greenSlider" destination="QMi-8n-Pba" id="dRp-Wi-E6v"/>
                         <outlet property="greenValueLabel" destination="hm1-IH-kM9" id="F0d-Lf-gGH"/>
