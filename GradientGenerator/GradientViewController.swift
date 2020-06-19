@@ -22,6 +22,10 @@ class GradientViewController: UIViewController, StoryboardView {
     @IBOutlet var colorImage1Background: UIView!
     @IBOutlet var colorImage2Background: UIView!
     
+    @IBOutlet var colorImage0Button: UIButton!
+    @IBOutlet var colorImage1Button: UIButton!
+    @IBOutlet var colorImage2Button: UIButton!
+    
     @IBOutlet var redSlider:   UISlider!
     @IBOutlet var greenSlider: UISlider!
     @IBOutlet var blueSlider:  UISlider!
@@ -39,6 +43,7 @@ class GradientViewController: UIViewController, StoryboardView {
     var color2 = [Int]()
     
     var selectedColor: String!
+    var selectedColorNum: Int!
     var gradient: CAGradientLayer!
     var disposeBag = DisposeBag()
     
@@ -68,7 +73,10 @@ class GradientViewController: UIViewController, StoryboardView {
             color0.append(contentsOf: [34, 193, 195, 100])
             color1.append(contentsOf: [150, 190, 116, 100])
             color2.append(contentsOf: [255, 199, 80, 100])
+            saveColor()
         }
+        
+        selectedColorNum = 0
 
         selectedColor = "color0"
         self.gradient = CAGradientLayer()
@@ -133,6 +141,107 @@ class GradientViewController: UIViewController, StoryboardView {
 // MARK: - func bind (ReactorKit)
     func bind(reactor: GradientViewReactor) {
         
+        colorImage0Button.rx.tap
+            .map { Reactor.Action.color(0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        colorImage1Button.rx.tap
+            .map { Reactor.Action.color(1) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        colorImage2Button.rx.tap
+            .map { Reactor.Action.color(2) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        redSlider.rx.value
+            .map { value in Reactor.Action.redColor(self.selectedColorNum, Int(value)) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        greenSlider.rx.value
+            .map { value in Reactor.Action.greenColor(self.selectedColorNum, Int(value)) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        blueSlider.rx.value
+            .map { value in Reactor.Action.blueColor(self.selectedColorNum, Int(value)) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        alphaSlider.rx.value
+            .map { value in Reactor.Action.alphaValue(self.selectedColorNum, Int(Float(value)*100)) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+// MARK: - state
+        reactor.state.asObservable().map { $0.colorImageBackgroundColors?[0] }
+            .distinctUntilChanged()
+            .subscribe(onNext: { color in
+                self.colorImage0Background.rx.base.layer.borderColor = color})
+            .disposed(by: disposeBag)
+        
+        reactor.state.asObservable().map { $0.colorImageBackgroundColors?[1] }
+            .distinctUntilChanged()
+            .subscribe(onNext: { color in
+                self.colorImage1Background.rx.base.layer.borderColor = color})
+            .disposed(by: disposeBag)
+        
+        reactor.state.asObservable().map { $0.colorImageBackgroundColors?[2] }
+            .distinctUntilChanged()
+            .subscribe(onNext: { color in
+                self.colorImage2Background.rx.base.layer.borderColor = color})
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.redValue }
+            .distinctUntilChanged()
+            .map { "\($0!)" }
+            .bind(to: redValueLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.greenValue }
+            .distinctUntilChanged()
+            .map { "\($0!)" }
+            .bind(to: greenValueLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.blueValue }
+            .distinctUntilChanged()
+            .map { "\($0!)" }
+            .bind(to: blueValueLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.alphaValue }
+            .distinctUntilChanged()
+            .map { "\($0!/100)" }
+            .bind(to: alphaValueLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.redValue }
+            .distinctUntilChanged()
+            .map { Float($0!) }
+            .bind(to: redSlider.rx.value)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.greenValue }
+            .distinctUntilChanged()
+            .map { Float($0!) }
+            .bind(to: redSlider.rx.value)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.blueValue }
+            .distinctUntilChanged()
+            .map { Float($0!) }
+            .bind(to: redSlider.rx.value)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.alphaValue }
+            .distinctUntilChanged()
+            .map { Float($0!/100) }
+            .bind(to: redSlider.rx.value)
+            .disposed(by: disposeBag)
     }
     
     func changeColor0Value(num: Int, value: Int) {

@@ -312,10 +312,13 @@
                         <outlet property="blueValueLabel" destination="FEH-T3-Hcr" id="8dG-Uh-UEJ"/>
                         <outlet property="colorImage0" destination="zsq-sF-Snr" id="90c-pA-HdZ"/>
                         <outlet property="colorImage0Background" destination="q93-fO-fJQ" id="7qd-bx-50y"/>
+                        <outlet property="colorImage0Button" destination="boC-Es-gBm" id="xct-Z8-z7V"/>
                         <outlet property="colorImage1" destination="Ik8-Nr-gsP" id="CrT-zr-hz0"/>
                         <outlet property="colorImage1Background" destination="GOD-Aj-Irw" id="rim-Ya-TPQ"/>
+                        <outlet property="colorImage1Button" destination="DPy-yn-aZ7" id="9Kx-eu-zTu"/>
                         <outlet property="colorImage2" destination="K5L-9J-Rcd" id="lBH-Yi-izp"/>
                         <outlet property="colorImage2Background" destination="ZTN-mx-oca" id="eWF-AL-AVy"/>
+                        <outlet property="colorImage2Button" destination="Rzp-ZP-ZMb" id="YQW-Jo-eZt"/>
                         <outlet property="gradientView" destination="vQF-Na-mbM" id="FgV-yr-YXt"/>
                         <outlet property="greenSlider" destination="QMi-8n-Pba" id="dRp-Wi-E6v"/>
                         <outlet property="greenValueLabel" destination="hm1-IH-kM9" id="F0d-Lf-gGH"/>
